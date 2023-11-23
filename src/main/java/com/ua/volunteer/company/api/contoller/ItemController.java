@@ -1,7 +1,9 @@
 package com.ua.volunteer.company.api.contoller;
 
+import com.ua.volunteer.company.DTO.RequestItemDTO;
 import com.ua.volunteer.company.entity.Item;
 import com.ua.volunteer.company.entity.Photo;
+import com.ua.volunteer.company.entity.RequestItem;
 import com.ua.volunteer.company.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -56,4 +58,5 @@ public class ItemController {
             e.printStackTrace();
         }
     }
+
 }
