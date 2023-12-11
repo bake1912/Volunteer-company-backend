@@ -2,14 +2,11 @@ package com.ua.volunteer.company.repository;
 
 import com.ua.jooq.Tables;
 import com.ua.volunteer.company.entity.Item;
-import com.ua.volunteer.company.entity.Photo;
+import com.ua.volunteer.company.entity.PhotoItem;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -66,11 +63,16 @@ public class ItemRepository {
                 .execute();
     }
 
-public List< Photo> getItemPhotos(Integer id){
-       List <Photo> photos = dsl.select().from(Tables.ITEMPHOTO)
+    public List<PhotoItem> getItemPhotos(Integer id) {
+        List<PhotoItem> photos = dsl.select()
+                .from(Tables.ITEMPHOTO)
                 .where(Tables.ITEMPHOTO.ITEM_ID.eq(id))
-                .fetchInto(Photo.class);
-       return  photos;
-}
+                .fetchInto(PhotoItem.class);
+        if (photos.isEmpty()) {
+            return null;
+        } else {
+            return photos;
+        }
+    }
 
 }

@@ -34,6 +34,8 @@ public class RequestRepository {
                 .set(Tables.REQUEST.REQUEST_DATE, LocalDate.now())
                 .set(Tables.REQUEST.DESCRIPTION,request.getDescription())
                 .set(Tables.REQUEST.USER_ID,request.getUserId())
+                .set(Tables.REQUEST.DELAY_NAME,request.getDelayName())
+                .set(Tables.REQUEST.FOR_WHOM_NAME,request.getForWhomName())
                 .returning()
                 .fetchOneInto(Request.class);
         return returnedRequest;
@@ -58,6 +60,6 @@ public class RequestRepository {
     }
 
     public List<RequestItem>getAllRequestItems(Integer id){
-        return dsl.select().from(Tables.REQUESTITEM).fetchInto(RequestItem.class);
+        return dsl.select().from(Tables.REQUESTITEM).where(Tables.REQUESTITEM.REQUEST_ID.eq(id)).fetchInto(RequestItem.class);
     }
 }

@@ -35,5 +35,9 @@ public class RequestController {
                                              @PathVariable("id") Integer requestId){
          return requestRepository.addRequestItem(requestItemDTO.getItemsId(),requestId);
     }
+    @GetMapping("/volunteers/request/{id}/item")
+    public List<RequestItem> getAllReqItems(@PathVariable("id") Integer id){
+        return requestRepository.getAllRequestItems(id);
+    }
 
 }

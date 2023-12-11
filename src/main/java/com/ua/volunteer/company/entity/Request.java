@@ -10,4 +10,6 @@ public class Request {
     private String description;
     private LocalDate requestDate;
     private Integer userId;
+    private String delayName;
+    private String forWhomName;
 }

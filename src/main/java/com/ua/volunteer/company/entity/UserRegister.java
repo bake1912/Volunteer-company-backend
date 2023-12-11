@@ -10,4 +10,6 @@ public class UserRegister {
     private String firstName;
     private String lastName;
     private String sexName;
+    private String roleName;
+    private String occupationName;
 }
